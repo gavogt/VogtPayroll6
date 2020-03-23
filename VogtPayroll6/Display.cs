@@ -11,10 +11,12 @@ namespace VogtPayroll6
             char option;
 
             option = Convert.ToChar(Console.ReadLine().ToLower());
+            PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
 
             switch (option)
             {
                 case 'a':
+                    payrollConsoleReader.AddEmployee();
                     break;
                 case 'd':
                     break;
@@ -23,6 +25,9 @@ namespace VogtPayroll6
                 case 's':
                     break;
                 case 'z':
+                    Console.Clear();
+                    Console.WriteLine("Exiting...");
+                    System.Environment.Exit(0);
                     break;
                 default:
                     break;
