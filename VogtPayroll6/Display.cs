@@ -8,21 +8,26 @@ namespace VogtPayroll6
     {
         public void PrintMenu()
         {
+            PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
             char option;
 
+            EnterSelectionMenu();
+
             option = Convert.ToChar(Console.ReadLine().ToLower());
-            PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
+            Employee[] empArray = default;
 
             switch (option)
             {
                 case 'a':
-                    payrollConsoleReader.AddEmployee();
+                    empArray = payrollConsoleReader.HowManyEmployees();
                     break;
                 case 'd':
+                    DisplayEmployeeInfo(empArray);
                     break;
                 case 'p':
                     break;
                 case 's':
+                    DisplayAllEmployeeInfo(empArray);
                     break;
                 case 'z':
                     Console.Clear();
@@ -30,7 +35,54 @@ namespace VogtPayroll6
                     System.Environment.Exit(0);
                     break;
                 default:
+                    Console.WriteLine("Please select 'a', 'd', 'p', 's' or 'z'");
                     break;
+            }
+
+        }
+        public void EnterSelectionMenu()
+        {
+            Console.WriteLine("Please enter 'a' to add an employee info");
+            Console.WriteLine("Enter 'd' to display employee info");
+            Console.WriteLine("Enter 'p' to display total payroll");
+            Console.WriteLine("Enter 's' to display info of all employees");
+            Console.WriteLine("Enter 'z' to exit program");
+
+        }
+
+        public void DisplayEmployeeInfo(Employee[] empArray)
+        {
+            Console.Write("Please enter employee number: ");
+            var empNum = Convert.ToInt32(Console.ReadLine());
+
+            if (empArray[empNum].EmpNumber == empNum)
+            {
+                Console.WriteLine($"Hours Worked: {empArray[empNum].EmpNumber} ");
+                Console.WriteLine($"Pay rate: {empArray[empNum].EmpPayrate:C2}");
+                Console.WriteLine($"Tax deduction: {empArray[empNum].EmpTaxRate}%");
+                Console.WriteLine($"Total pay: {empArray[empNum].GetGrossPay()}");
+            }
+
+            foreach (var employee in empArray)
+            {
+                Console.WriteLine($"Hours Worked: {employee.EmpHoursWorked}");
+                Console.WriteLine($"Pay rate: {employee.EmpPayrate:C2}");
+                Console.WriteLine($"Tax deduction: {employee.EmpTaxRate}%");
+                Console.WriteLine($"Total pay: {employee.GetGrossPay()}");
+
+            }
+        }
+
+        public void DisplayAllEmployeeInfo(Employee[] empArray)
+        {
+
+            foreach (var employee in empArray)
+            {
+                Console.WriteLine($"Hours Worked: {employee.EmpHoursWorked}");
+                Console.WriteLine($"Pay rate: {employee.EmpPayrate:C2}");
+                Console.WriteLine($"Tax deduction: {employee.EmpTaxRate}%");
+                Console.WriteLine($"Total pay: {employee.GetGrossPay()}");
+
             }
         }
     }

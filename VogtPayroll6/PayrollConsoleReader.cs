@@ -6,7 +6,7 @@ namespace VogtPayroll6
 {
     class PayrollConsoleReader
     {
-        public void HowManyEmployees()
+        public Employee[] HowManyEmployees()
         {
             int howMany;
             do {
@@ -15,10 +15,18 @@ namespace VogtPayroll6
                 howMany = Convert.ToInt32(Console.ReadLine());
             } while (howMany < 0 || howMany > 15);
 
-            double[] empArray = new double[howMany];
+            Employee[] empArray = new Employee[howMany];
 
+            for (int i = 0; i < empArray.Length; i++)
+            {
+                Employee emp = default;
 
+                emp = AddEmployee();
 
+                empArray[i] = emp;
+            }
+
+            return empArray;
         }
 
         public Employee AddEmployee()
