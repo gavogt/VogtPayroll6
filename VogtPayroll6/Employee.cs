@@ -24,6 +24,21 @@ namespace VogtPayroll6
             this.empTaxRate = empTaxRate;
         }
 
+        public void DisplayEmployeeInfo(Employee[] empArray)
+        {
+            Console.Write("Please enter employee number: ");
+            var empNum = Convert.ToInt32(Console.ReadLine());
+            var temp = empArray[empNum];
+            if (empArray[empNum].EmpNumber == empNum)
+            {
+                Console.WriteLine($"Hours Worked: {empArray[empNum].EmpNumber} ");
+                Console.WriteLine($"Pay rate: {empArray[empNum].EmpPayrate:C2}");
+                Console.WriteLine($"Tax deduction: {empArray[empNum].EmpTaxRate}%");
+                Console.WriteLine($"Total pay: {empArray[empNum].GetGrossPay()}");
+            }
+
+            Program.Run();
+        }
         public decimal GetGrossPay() {
 
             return empHoursWorked * empPayrate * empTaxRate;

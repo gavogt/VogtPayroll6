@@ -6,10 +6,10 @@ namespace VogtPayroll6
 {
     class Payroll
     {
+        public decimal grossPaytotal = 0.00m;
 
         public void DisplayPayroll(Employee[] empArray) {
-            decimal grossPaytotal = 0.00m;
-
+           
             foreach (var employee in empArray)
             {
                 grossPaytotal += employee.GetGrossPay();

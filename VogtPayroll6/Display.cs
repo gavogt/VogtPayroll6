@@ -10,7 +10,7 @@ namespace VogtPayroll6
         {
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
             char option;
-
+            Payroll payroll = new Payroll();
             EnterSelectionMenu();
 
             option = Convert.ToChar(Console.ReadLine().ToLower());
@@ -25,6 +25,7 @@ namespace VogtPayroll6
                     DisplayEmployeeInfo(empArray);
                     break;
                 case 'p':
+                    Console.WriteLine($"Gross pay total: {payroll.grossPaytotal}");
                     break;
                 case 's':
                     DisplayAllEmployeeInfo(empArray);
@@ -55,22 +56,15 @@ namespace VogtPayroll6
             Console.Write("Please enter employee number: ");
             var empNum = Convert.ToInt32(Console.ReadLine());
 
-            if (empArray[empNum].EmpNumber == empNum)
+            if (empArray[0].EmpNumber == empNum)
             {
-                Console.WriteLine($"Hours Worked: {empArray[empNum].EmpNumber} ");
-                Console.WriteLine($"Pay rate: {empArray[empNum].EmpPayrate:C2}");
-                Console.WriteLine($"Tax deduction: {empArray[empNum].EmpTaxRate}%");
-                Console.WriteLine($"Total pay: {empArray[empNum].GetGrossPay()}");
+                Console.WriteLine($"Hours Worked: {empArray[0].EmpNumber} ");
+                Console.WriteLine($"Pay rate: {empArray[0].EmpPayrate:C2}");
+                Console.WriteLine($"Tax deduction: {empArray[0].EmpTaxRate}%");
+                Console.WriteLine($"Total pay: {empArray[0].GetGrossPay()}");
             }
 
-            foreach (var employee in empArray)
-            {
-                Console.WriteLine($"Hours Worked: {employee.EmpHoursWorked}");
-                Console.WriteLine($"Pay rate: {employee.EmpPayrate:C2}");
-                Console.WriteLine($"Tax deduction: {employee.EmpTaxRate}%");
-                Console.WriteLine($"Total pay: {employee.GetGrossPay()}");
-
-            }
+            PrintMenu();   
         }
 
         public void DisplayAllEmployeeInfo(Employee[] empArray)
@@ -84,6 +78,9 @@ namespace VogtPayroll6
                 Console.WriteLine($"Total pay: {employee.GetGrossPay()}");
 
             }
+
+            Console.WriteLine();
+            PrintMenu();
         }
     }
 }
