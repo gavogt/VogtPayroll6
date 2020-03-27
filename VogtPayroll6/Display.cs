@@ -6,7 +6,7 @@ namespace VogtPayroll6
 {
     class Display
     {
-        public void PrintMenu()
+        public void PrintMenu(Employee[] empArray)
         {
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
             char option;
@@ -14,31 +14,35 @@ namespace VogtPayroll6
             EnterSelectionMenu();
 
             option = Convert.ToChar(Console.ReadLine().ToLower());
-            Employee[] empArray = default;
-
-            switch (option)
+            do
             {
-                case 'a':
-                    empArray = payrollConsoleReader.HowManyEmployees();
-                    break;
-                case 'd':
-                    DisplayEmployeeInfo(empArray);
-                    break;
-                case 'p':
-                    Console.WriteLine($"Gross pay total: {payroll.grossPaytotal}");
-                    break;
-                case 's':
-                    DisplayAllEmployeeInfo(empArray);
-                    break;
-                case 'z':
-                    Console.Clear();
-                    Console.WriteLine("Exiting...");
-                    System.Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Please select 'a', 'd', 'p', 's' or 'z'");
-                    break;
-            }
+                switch (option)
+                {
+                    case 'a':
+                        empArray = payrollConsoleReader.HowManyEmployees();
+                        PrintMenu(empArray);
+                        break;
+                    case 'd':
+                        DisplayEmployeeInfo(empArray);
+                        Console.WriteLine("Here!");
+                        PrintMenu(empArray);
+                        break;
+                    case 'p':
+                        Console.WriteLine($"Gross pay total: {payroll.grossPaytotal}");
+                        break;
+                    case 's':
+                        DisplayAllEmployeeInfo(empArray);
+                        break;
+                    case 'z':
+                        Console.Clear();
+                        Console.WriteLine("Exiting...");
+                        System.Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Please select 'a', 'd', 'p', 's' or 'z'");
+                        break;
+                }
+            } while (option != 'z');
 
         }
         public void EnterSelectionMenu()
@@ -64,7 +68,7 @@ namespace VogtPayroll6
                 Console.WriteLine($"Total pay: {empArray[0].GetGrossPay()}");
             }
 
-            PrintMenu();   
+            PrintMenu(empArray);   
         }
 
         public void DisplayAllEmployeeInfo(Employee[] empArray)
@@ -80,7 +84,7 @@ namespace VogtPayroll6
             }
 
             Console.WriteLine();
-            PrintMenu();
+            PrintMenu(empArray);
         }
     }
 }

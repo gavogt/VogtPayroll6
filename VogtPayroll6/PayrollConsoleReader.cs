@@ -8,8 +8,6 @@ namespace VogtPayroll6
     {
         public Employee[] HowManyEmployees()
         {
-            Display display = new Display();
- 
             int howMany;
             do {
 
@@ -26,7 +24,6 @@ namespace VogtPayroll6
                 empArray[i] = emp;
             }
 
-            display.PrintMenu();
             return empArray;
         }
 
