@@ -9,6 +9,7 @@ namespace VogtPayroll6
         public Employee[] HowManyEmployees()
         {
             Display display = new Display();
+ 
             int howMany;
             do {
 
@@ -22,7 +23,7 @@ namespace VogtPayroll6
             {
                 Employee emp = AddEmployee();
 
-                empArray[i] = ;
+                empArray[i] = emp;
             }
 
             display.PrintMenu();
