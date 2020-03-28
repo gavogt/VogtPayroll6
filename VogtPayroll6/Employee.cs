@@ -41,7 +41,7 @@ namespace VogtPayroll6
         }
         public decimal GetGrossPay() {
 
-            return empHoursWorked * empPayrate * empTaxRate;
+            return empHoursWorked * empPayrate;
         }
 
         public decimal GetTaxDeduction()
