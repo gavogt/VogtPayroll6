@@ -6,12 +6,17 @@ namespace VogtPayroll6
 {
     class Display
     {
+        private readonly Payroll _payroll;
+
+        public Display(Payroll payroll)
+        {
+            _payroll = payroll;
+        }
+
         public void PrintMenu(Employee[] empArray)
         {
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
             char option;
-            Payroll payroll = new Payroll();
-            
 
             EnterSelectionMenu();
 
@@ -30,7 +35,7 @@ namespace VogtPayroll6
                         PrintMenu(empArray);
                         break;
                     case 'p':
-                        payroll.DisplayPayroll(empArray);
+                        _payroll.DisplayPayroll(empArray);
                         PrintMenu(empArray);
                         break;
                     case 's':
@@ -53,7 +58,7 @@ namespace VogtPayroll6
             Console.WriteLine();
             Console.WriteLine("Please enter 'a' to add an employee info");
             Console.WriteLine("Enter 'd' to display employee info");
-            Console.WriteLine("Enter 'p' to display total payroll");
+            Console.WriteLine("Enter 'p' to display total _payroll");
             Console.WriteLine("Enter 's' to display info of all employees");
             Console.WriteLine("Enter 'z' to exit program");
 
@@ -75,11 +80,10 @@ namespace VogtPayroll6
                     Console.WriteLine($"Tax deduction: {empArray[i].EmpTaxRate}%");
                     Console.WriteLine($"Total pay: {empArray[i].GetGrossPay()}");
                 }
-
-
             }
 
-            PrintMenu(empArray);   
+            PrintMenu(empArray);
+
         }
 
         public void DisplayAllEmployeeInfo(Employee[] empArray)
@@ -95,6 +99,8 @@ namespace VogtPayroll6
                 Console.WriteLine($"Total pay: {employee.GetGrossPay():C2}");
             }
 
-            PrintMenu(empArray);        }
+            PrintMenu(empArray);
+
+        }
     }
 }

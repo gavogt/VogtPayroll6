@@ -11,9 +11,11 @@ namespace VogtPayroll6
 
         public static void Run()
         {
-            Display display = new Display();
+            Payroll payroll = new Payroll();
+            Display display = new Display(payroll);
             Employee[] empArray = default;
             display.PrintMenu(empArray);
+
         }
     }
 }
