@@ -13,6 +13,11 @@ namespace VogtPayroll6
             _payroll = payroll;
         }
 
+        #region PrintMenu
+        /// <summary>
+        /// Prints the menu
+        /// </summary>
+        /// <param name="empArray">Emp array passed in</param>
         public void PrintMenu(Employee[] empArray)
         {
             PayrollConsoleReader payrollConsoleReader = new PayrollConsoleReader();
@@ -26,7 +31,7 @@ namespace VogtPayroll6
                 switch (option)
                 {
                     case 'a':
-                        empArray = _payroll.HowManyEmployees();
+                        empArray = payrollConsoleReader.HowManyEmployees();
                         PrintMenu(empArray);
                         break;
                     case 'd':
@@ -53,6 +58,12 @@ namespace VogtPayroll6
             } while (option != 'z');
 
         }
+        #endregion
+
+        #region EnterSelectionMenu
+        /// <summary>
+        /// Selection menu
+        /// </summary>
         public void EnterSelectionMenu()
         {
             Console.WriteLine();
@@ -63,7 +74,13 @@ namespace VogtPayroll6
             Console.WriteLine("Enter 'z' to exit program");
 
         }
+        #endregion
 
+        #region PrintEmployeeInfo
+        /// <summary>
+        /// Prints employee info
+        /// </summary>
+        /// <param name="empArray">Array passed in</param>
         public void PrintEmployeeInfo(Employee[] empArray)
         {
             Console.WriteLine();
@@ -85,7 +102,13 @@ namespace VogtPayroll6
             PrintMenu(empArray);
 
         }
+        #endregion
 
+        #region PrintAllEmployeeInfo
+        /// <summary>
+        /// Print all employee info
+        /// </summary>
+        /// <param name="empArray">Array passed in</param>
         public void PrintAllEmployeeInfo(Employee[] empArray)
         {
 
@@ -102,5 +125,6 @@ namespace VogtPayroll6
             PrintMenu(empArray);
 
         }
+        #endregion
     }
 }

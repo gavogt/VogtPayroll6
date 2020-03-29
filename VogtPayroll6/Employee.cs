@@ -24,15 +24,28 @@ namespace VogtPayroll6
             this.empTaxRate = empTaxRate;
         }
 
+        #region GetGrossPay
+        /// <summary>
+        /// Get gross pay
+        /// </summary>
+        /// <returns>Gross pay</returns>
         public decimal GetGrossPay() {
 
             return empHoursWorked * empPayrate;
-        }
 
+        }
+        #endregion
+
+        #region GetTaxDeduction
+        /// <summary>
+        /// Gets tax deductions
+        /// </summary>
+        /// <returns>Tax deductions</returns>
         public decimal GetTaxDeduction()
         {
             return (GetGrossPay() - (EmpTaxRate % 100.00m * GetGrossPay()));
 
         }
+        #endregion
     }
 }
