@@ -6,7 +6,16 @@ namespace VogtPayroll6
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Run();
+        }
+
+        public static void Run()
+        {
+            Payroll payroll = new Payroll();
+            Display display = new Display(payroll);
+            Employee[] empArray = default;
+            display.PrintMenu(empArray);
+
         }
     }
 }
