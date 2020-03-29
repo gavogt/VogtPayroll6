@@ -26,11 +26,11 @@ namespace VogtPayroll6
                 switch (option)
                 {
                     case 'a':
-                        empArray = payrollConsoleReader.HowManyEmployees();
+                        empArray = _payroll.HowManyEmployees();
                         PrintMenu(empArray);
                         break;
                     case 'd':
-                        DisplayEmployeeInfo(empArray);
+                        PrintEmployeeInfo(empArray);
                         Console.WriteLine("Here!");
                         PrintMenu(empArray);
                         break;
@@ -39,7 +39,7 @@ namespace VogtPayroll6
                         PrintMenu(empArray);
                         break;
                     case 's':
-                        DisplayAllEmployeeInfo(empArray);
+                        PrintAllEmployeeInfo(empArray);
                         break;
                     case 'z':
                         Console.Clear();
@@ -64,7 +64,7 @@ namespace VogtPayroll6
 
         }
 
-        public void DisplayEmployeeInfo(Employee[] empArray)
+        public void PrintEmployeeInfo(Employee[] empArray)
         {
             Console.WriteLine();
             Console.Write("Please enter employee number: ");
@@ -86,13 +86,13 @@ namespace VogtPayroll6
 
         }
 
-        public void DisplayAllEmployeeInfo(Employee[] empArray)
+        public void PrintAllEmployeeInfo(Employee[] empArray)
         {
 
             foreach (var employee in empArray)
             {
                 Console.WriteLine();
-                Console.WriteLine($"HoursID: {employee.EmpNumber}");
+                Console.WriteLine($"Emp ID: {employee.EmpNumber}");
                 Console.WriteLine($"Hours Worked: {employee.EmpHoursWorked}");
                 Console.WriteLine($"Pay rate: {employee.EmpPayrate:C2}");
                 Console.WriteLine($"Tax deduction: {employee.EmpTaxRate}%");
